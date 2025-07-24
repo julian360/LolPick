@@ -60,7 +60,7 @@ nav a:hover {
 #content {
   
   padding: 5px;
-background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
+background: linear-gradient(to bottom, rgb(128 167 206), rgb(30 73 100));
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   min-height: 600px; /* Altura mínima para el contenido */
@@ -88,7 +88,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 }
 
 .tierlist-display strong {
-  color: #2c3e50;
+color: #f1f1f1;
 }
 
 .tierlist-display span {
@@ -121,7 +121,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 
 .search-input:focus {
   border-color: #2980b9;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+search-input  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
 }
 
 .suggestions-list {
@@ -133,7 +133,6 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   margin: 5px 0 0 0;
   width: 80%;
   max-width: 400px;
-  border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -168,7 +167,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 }
 
 .champion-tag {
-  background-color: #e0e0e0;
+background-color: #151515;
   padding: 8px 12px;
   border-radius: 20px;
   font-size: 14px;
@@ -176,6 +175,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   align-items: center;
   gap: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #f7f7f7;
 }
 
 .remove-tag {
@@ -215,7 +215,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
     max-width: 500px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #fff;
+  background-color: #3c3c3c;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding-left: 40px;
     padding-right: 40px;
@@ -239,6 +239,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   padding: 0; /* Eliminar padding extra de search-container */
   width: 48%; /* Aproximadamente la mitad del ancho disponible */
   max-width: 380px; /* Limitar el ancho individual */
+  background: #3c3c3c;
 }
 
 .team-builder-inputs-row .search-input {
@@ -246,6 +247,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   max-width: none; /* Eliminar el max-width para que se ajuste al 90% */
   font-size: 16px; /* Hacer la fuente un poco más pequeña */
   padding: 8px 12px; /* Reducir el padding */
+  background: #f3f3f3;
 }
 
 .team-builder-inputs-row .suggestions-list {
@@ -271,7 +273,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 .team-power-display {
     margin-top: 10px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #9bc7f3;
     font-size: 16px;
     text-align: center;
 }
@@ -623,15 +625,15 @@ document.addEventListener('DOMContentLoaded', () => {
 const style = document.createElement('style');
 style.textContent = `
   #team-builder-tierlist {
-    border: 2px solid #333; /* Un borde para que veas la caja */
+    border: 2px solid #000000; /* Un borde para que veas la caja */
    
     width: 80%; /* Un ancho para la caja */
-    background-color: #f0f0f0; /* Un color de fondo para la caja */
+    background-color: #3c3c3c; /* Un color de fondo para la caja */
     text-align: center; /* ¡Esto centra el texto dentro de la caja, incluyendo el h2! */
   }
 
   #team-builder-tierlist h2 {
-    color: #0056b3; /* Color para tu título */
+    color: #f1f1f1; /* Color para tu título */
     margin-bottom: 10px; /* Espacio debajo del título */
   }
 `;
@@ -668,7 +670,12 @@ document.head.appendChild(style);
 
         const title = document.createElement('h3');
         title.textContent = sectionTitle;
-        title.style.color = '#2c3e50';
+        if (sectionType === 'allied') 
+          title.style.color = 'rgb(161 237 175)';
+          else
+            title.style.color = 'rgb(255 199 199)';
+
+
         title.style.marginBottom = '10px';
          title.style.marginLeft = '10px';
         sectionDiv.appendChild(title);
@@ -703,7 +710,7 @@ document.head.appendChild(style);
         const renderSectionSelectedChampions = () => {
             selectedDisplay.innerHTML = '';
             if (selectedChampionsArray.length === 0) {
-                selectedDisplay.innerHTML = '<p style="color: #666; font-size: 14px;">No hay campeones seleccionados aún.</p>';
+                selectedDisplay.innerHTML = '<p style="color: #e0e0e0; font-size: 14px;">No hay campeones seleccionados aún.</p>';
             }
             selectedChampionsArray.forEach(champ => {
                 const champTag = document.createElement('span');
