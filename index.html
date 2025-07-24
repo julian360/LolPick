@@ -92,7 +92,7 @@ color: #f1f1f1;
 }
 
 .tierlist-display span {
-  color: black;
+  color: #dfdfdf;
   font-weight: bold;
 }
 
@@ -278,7 +278,12 @@ background-color: #151515;
     text-align: center;
 }
 
-
+@media (max-width: 600px) {
+ #logo {
+    width: 80%; /* La imagen ocupará el 50% del ancho de su contenedor */
+    height: 80%;
+  }
+}
   </style>
   <link rel="manifest" href="manifest.json">
  <link rel="icon" type="image/png" href="icons/Icon.png">
@@ -294,8 +299,16 @@ background-color: #151515;
   </nav>
 
   <div id="content">
-
-    <span style="text-align: center;"><p><h1>Arma equipos y analiza cual es tu mejor opción para pickear</h1></p><span>
+    <img src="icons/Logo_XL.png" id="logo" style="display: block; /* Make the image a block-level element */
+margin-left: auto;
+margin-right: auto;
+" alt="Girl in a jacket" width="500" height="500">
+    <span style="text-align: center;"><p><h1
+      style="
+    font-weight: bold;
+    /* font-family: serif; */
+    background: linear-gradient(180deg, #0099ff, #9234db);
+    background-blend-mode: multiply;">Arma equipos y analiza cual es tu mejor opción para pickear</h1></p><span>
    
   </div>
 
@@ -304,8 +317,8 @@ background-color: #151515;
 const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   const championsData = {
   "ahri": { "value": 56.14, "counter": "irelia,naafiri,diana,zoe,mel", "synergy": "vi,kaisa,jinx,viego,nautilus", "imagen": url_img + "Ahri.png" },
-  "ambessa": { "value": 76.14, "counter": "sett,poppy,mordekaiser,chogath,kayle", "synergy": "qiyana,fiddlesticks,rammus,reksai,volibear", "imagen": url_img + "Ambessa.png" },
-   "aurora": { "value": 75.04, "counter": "kennen,veigar,ahri,ekko,rumble", "synergy": "maokai,nasus,ivern,jax,wukong", "imagen": url_img + "Aurora.png" },
+  "ambessa": { "value": 66.14, "counter": "sett,poppy,mordekaiser,chogath,kayle", "synergy": "qiyana,fiddlesticks,rammus,reksai,volibear", "imagen": url_img + "Ambessa.png" },
+   "aurora": { "value": 67.04, "counter": "kennen,veigar,ahri,ekko,rumble", "synergy": "maokai,nasus,ivern,jax,wukong", "imagen": url_img + "Aurora.png" },
   "ashe": { "value": 50.00, "counter": "kaisa,jhin,milio,missfortune,thresh", "synergy": "nami,renataglasc,brand,rakan,velkoz", "imagen": url_img + "Ashe.png" },
   "aatrox": { "value": 56.14, "counter": "akshan,malphite,kennen,kled,nasus", "synergy": "teemo,belveth,trundle,karthus,elise", "imagen": url_img + "Aatrox.png" },
   "akshan": { "value": 56.14, "counter": "naafiri,zeri,lulu,annie,yunara", "synergy": "ivern,lillia,briar,zac,lulu", "imagen": url_img + "Akshan.png" },
@@ -331,8 +344,8 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "irelia": { "value": 49.485, "counter": "warwick,zac,riven,jax,malphite", "synergy": "yone,aurora,yorick,ryze,darius", "imagen": url_img + "Irelia.png" },
   "janna": { "value": 52.49, "counter": "nidalee,karthus,yunara,nami,milio", "synergy": "kogmaw,vayne,sivir,nilah,missfortune", "imagen": url_img + "Janna.png" },
   "jarvaniv": { "value": 56.56, "counter": "ivern,gwen,masteryi,briar,trundle", "synergy": "vayne,fiddlesticks,zyra,shen,zilean", "imagen": url_img + "JarvanIV.png" },
-  "jax": { "value": 52.675, "counter": "poppy,heimerdinger,quinn,urgot,irelia", "synergy": "yone,wukong,aurora,irelia,garen", "imagen": url_img + "Jax.png" },
-  "jayce": { "value": 47.695, "counter": "malphite,irelia,tryndamere,drmundo,quinn", "synergy": "illaoi,singed,ryze,rumble,irelia", "imagen": url_img + "Jayce.png" },
+  "jax": { "value": 52.675, "counter": "poppy,heimerdinger,viego,urgot,irelia", "synergy": "yone,wukong,aurora,irelia,garen", "imagen": url_img + "Jax.png" },
+  "jayce": { "value": 47.695, "counter": "malphite,irelia,rengar,drmundo,wukong", "synergy": "illaoi,singed,ryze,rumble,irelia", "imagen": url_img + "Jayce.png" },
   "jhin": { "value": 59.25, "counter": "yasuo,kogmaw,twitch,vayne,nilah", "synergy": "nami,xerath,lux,karma,pyke", "imagen": url_img + "Jhin.png" },
   "kalista": { "value": 40, "counter": "nilah,samira,tristana,jinx,sivir", "synergy": "leona,thresh,nautilus,rakan,blitzcrank", "imagen": url_img + "Kalista.png" },
   "karma": { "value": 50.67, "counter": "maokai,milio,braum,sona,nami", "synergy": "lucian,ezreal,jhin,draven,sivir", "imagen": url_img + "Karma.png" },
@@ -373,13 +386,13 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "qiyana": { "value": 42.255, "counter": "pantheon,malphite,vex,swain,zoe", "synergy": "ambessa,mel,yone,zed,khazix", "imagen": url_img + "Qiyana.png" },
   "quinn": { "value": 51.635, "counter": "sivir,sona,samira,brand,braum", "synergy": "morgana,pyke,seraphine,lux,nami", "imagen": url_img + "Quinn.png" },
   "rakan": { "value": 51.595, "counter": "taric,sonna,bard,milio,morgana", "synergy": "kogmaw,aphelios,tristana,twitch,vayne", "imagen": url_img + "Rakan.png" },
-  "rammus": { "value": 53.985, "counter": "lillia,karthus,gwen,vi,jarvaniv", "synergy": "hwei,viktor,oriana,irelia,malzahar", "imagen": url_img + "Rammus.png" },
-  "reksai": { "value": 50.46, "counter": "ivern,jax,nunu,graves,poppy", "synergy": "sejuani,taliyah,vi,amumu,aatrox", "imagen": url_img + "RekSai.png" },
+  "rammus": { "value": 53.985, "counter": "lillia,karthus,gwen,vi,jarvaniv", "synergy": "hwei,viktor,ambessa,irelia,malzahar", "imagen": url_img + "Rammus.png" },
+  "reksai": { "value": 50.46, "counter": "ivern,jax,nunu,graves,poppy", "synergy": "sejuani,ambessa,vi,amumu,aatrox", "imagen": url_img + "RekSai.png" },
   "rell": { "value": 50.22, "counter": "janna,poppy,nami,taric,maokai", "synergy": "missfortune,kalista,tristana,nilah,samira", "imagen": url_img + "Rell.png" },
   "renataglasc": { "value": 46.72, "counter": "maokai,taric,milio,sona,leona", "synergy": "draven,varus,samira,kogmaw,kalista", "imagen": url_img + "Renata.png" },
   "renekton": { "value": 52.23, "counter": "quinn,illaoi,kled,kayle,vayne", "synergy": "yone,ambessa,yorick,riven,darius", "imagen": url_img + "Renekton.png" },
   "rengar": { "value": 40.425, "counter": "warwick,nocturne,briar,volibear,nunu", "synergy": "xerath,rumble,velkoz,taliyah,katarina", "imagen": url_img + "Rengar.png" },
-  "rumble": { "value": 47.33, "counter": "heimerdinger,vladimir,varus,sett,zac", "synergy": "kogmaw,sona,kayle,nilah,tristana", "imagen": url_img + "Rumble.png" },
+  "rumble": { "value": 47.33, "counter": "heimerdinger,pantheon,vayne,sett,yone", "synergy": "corki,reksai,ivern,naafiri,olaf", "imagen": url_img + "Rumble.png" },
   "ryze": { "value": 49.535, "counter": "varus,pantheon,olaf,quinn,cassiopeia", "synergy": "zilean,belveth,tryndamere,swain", "imagen": url_img + "Ryze.png" },
   "samira": { "value": 52.355, "counter": "nilah,jinx,kogmaw,corki,xayah", "synergy": "nautilus,rell,alistar,thresh,leona", "imagen": url_img + "Samira.png" },
   "sejuani": { "value": 50.66, "counter": "lillia,reksai,wukong,elise,fiddlesticks", "synergy": "rumble,corki,kayle,quinn,heimerdinger", "imagen": url_img + "Sejuani.png" },
@@ -415,7 +428,7 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "velkoz": { "value": 50.99, "counter": "nami,poppy,renataglasc,zoe,sona", "synergy": "nami,janna,lulu,karma,braum", "imagen": url_img + "Velkoz.png" },
   "vex": { "value": 55.11, "counter": "annie,kayle,orianna,vladimir,cassiopeia", "synergy": "yone,zed,akali,sylas,qiyana", "imagen": url_img + "Vex.png" },
   "vi": { "value": 52.165, "counter": "gragas,trundle,briar,udyr,reksai", "synergy": "ahri,orianna,malphite,yasuo,galio", "imagen": url_img + "Vi.png" },
-  "viego": { "value": 59.565, "counter": "rammus,belveth,elise,jax,warwick", "synergy": "vi,lillia,shyvana,gragas,ornn", "imagen": url_img + "Viego.png" },
+  "viego": { "value": 59.565, "counter": "warwick,corki,volibear,jarvaniv,masteryi", "synergy": "vi,lillia,shyvana,gragas,ornn", "imagen": url_img + "Viego.png" },
   "viktor": { "value": 52.3, "counter": "akali,anivia,zoe,xerath,talon", "synergy": "mel,azir,corki,cassiopeia,heimerdinger", "imagen": url_img + "Viktor.png" },
   "vladimir": { "value": 51.965, "counter": "malzahar,anivia,cassiopeia,velkoz,zoe", "synergy": "azir,fizz,yone,jayce,brand", "imagen": url_img + "Vladimir.png" },
   "volibear": { "value": 57.195, "counter": "jax,ivern,kindred,ekko,khazix", "synergy": "shyvana,sejuani,xinzhao,vi,gragas", "imagen": url_img + "Volibear.png" },
@@ -460,11 +473,11 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "galio": { "value": 50, "counter": "quinn,nidalee,kennen,cassiopeia,brand", "synergy": "tryndamere,gragas,olaf,shyvana,evelynn", "imagen": url_img + "Galio.png" },
   "gangplank": { "value": 50, "counter": "trundle,pantheon,olaf,sett,kayle", "synergy": "olaf,qiyana,jax,xinzhao,ivern", "imagen": url_img + "Gangplank.png" },
   "gnar": { "value": 50, "counter": "reksai,cassiopeia,mordekaiser,ryze,kled", "synergy": "teemo,nasus,wukong,rammus,volibear", "imagen": url_img + "Gnar.png" },
-  "gragas": { "value": 50, "counter": "malphite,velkoz,kayle,gangplank,talon", "synergy": "wukong,ivern,rammus,nasus,nunu", "imagen": url_img + "Gragas.png" },
+  "gragas": { "value": 50, "counter": "malphite,velkoz,kayle,gangplank,talon", "synergy": "rengar,ivern,rammus,nasus,nunu", "imagen": url_img + "Gragas.png" },
   "graves": { "value": 50, "counter": "amumu,taliyah,trundle,poppy,nocturne", "synergy": "rumble,naafiri,brand,lissandra,heimerdinger", "imagen": url_img + "Graves.png" },
   "gwen": { "value": 50, "counter": "vayne,kennen,warwick,trundle,singed", "synergy": "maokai,teemo,olaf,jax,wukong", "imagen": url_img + "Gwen.png" },
   "hecarim": { "value": 50, "counter": "nasus,ivern,masteryi,talon,briar", "synergy": "swain,neeko,kassadin,leblanc,brand", "imagen": url_img + "Hecarim.png" },
-  "hwei": { "value": 50, "counter": "quinn,jayce,kayle,xerath,zoe", "synergy": "olaf,tryndamere,reksai,trundle,belveth", "imagen": url_img + "Hwei.png" },
+  "hwei": { "value": 50, "counter": "aurora,jayce,kayle,xerath,zoe", "synergy": "olaf,tryndamere,reksai,trundle,belveth", "imagen": url_img + "Hwei.png" },
   "ivern": { "value": 50, "counter": "reksai,jax,poppy,taric,nunu", "synergy": "gangplank,gragas,akshan,diana,irelia", "imagen": url_img + "Ivern.png" },
   "ksante": { "value": 50, "counter": "vayne,kayle,gnar,mordekaiser,wukong", "synergy": "corki,reksai,khazix,briar,shyvana", "imagen": url_img + "KSante.png" },
   "milio": { "value": 50, "counter": "yunara,jinx,nami,ziggs,taric", "synergy": "senna,xayah,nilah,ashe,kogmaw", "imagen": url_img + "Milio.png" },
