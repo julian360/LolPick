@@ -1,4 +1,4 @@
-const CACHE_NAME = 'version-1.0.2';
+const CACHE_NAME = 'version-1.1.0';
 const urlsToCache = [
   '/LolPick/index.html',
   '/LolPick/icons/Logo.png'
