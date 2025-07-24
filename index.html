@@ -4,10 +4,13 @@
   <meta charset="utf-8">
   <title>LOL Pick & Team Builder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
 /* Estilos para el cuerpo de la página */
 body {
-  font-family: 'Segoe UI', sans-serif; /* Usando la fuente Segoe UI */
+  font-family: 'Roboto', 'Segoe UI', sans-serif; /* Usando la fuente Roboto */
   margin: 0; /* Elimina el margen predeterminado del body */
   padding: 0; /* Elimina el padding predeterminado del body */
   background-color: #3c3c3c; 
@@ -91,15 +94,37 @@ nav a:hover {
 
 /* Estilos para el contenedor de contenido */
 #content {
-  
   padding: 7px;
-background: linear-gradient(to bottom, rgb(99 177 235), rgb(30 73 100));
+  background: linear-gradient(to bottom, rgb(99 177 235), rgb(30 73 100));
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   min-height: 600px; /* Altura mínima para el contenido */
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
 }
+
+/* --- ESTILOS PARA EL TÍTULO PRINCIPAL --- */
+.headline-container {
+    text-align: center;
+    padding: 25px 20px;
+    background: rgba(0, 0, 0, 0.25); /* Fondo oscuro semitransparente */
+    border-radius: 8px;
+    margin: 25px auto;
+    width: 90%;
+    max-width: 750px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-headline {
+    font-weight: 700;
+    font-size: 2.2em;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    line-height: 1.3;
+    margin: 0;
+}
+/* --- FIN DE ESTILOS PARA EL TÍTULO PRINCIPAL --- */
 
 
 /* Estilos para la lista de campeones */
@@ -314,9 +339,12 @@ background-color: #151515;
 }
 
 @media (max-width: 600px) {
- #logo {
-    width: 80%; /* La imagen ocupará el 50% del ancho de su contenedor */
-    height: 80%;
+  #logo {
+    width: 80%; 
+    height: auto; /* Mantener proporción en móviles */
+  }
+  .main-headline {
+    font-size: 1.8em; /* Título más pequeño en móviles */
   }
 }
 
@@ -342,20 +370,12 @@ background-color: #151515;
 
 
   <div id="content">
-    <img src="icons/Logo_XL.png" id="logo" style="display: block; /* Make the image a block-level element */
-margin-left: auto;
-margin-right: auto;
-" alt="Girl in a jacket" width="500" height="500">
-    <span style="text-align: center;"><p><h1
-      style="
-    font-weight: bold;
-
-            font-family: 'Poppins', sans-serif;
-            color: black; /* Color de texto negro como solicitado */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombreado sutil añadido */
-
-    background: linear-gradient(180deg, #0099ff, #9234db);
-    background-blend-mode: multiply;">Arma equipos y analiza cual es tu mejor opción para pickear</h1></p><span>
+    <img src="icons/Logo_XL.png" id="logo" style="display: block; margin-left: auto; margin-right: auto;" alt="Logo de la aplicación" width="500" height="500">
+    
+    <!-- Contenedor del Título Principal -->
+    <div class="headline-container">
+        <h1 class="main-headline">Arma equipos y analiza cuál es tu mejor opción para pickear</h1>
+    </div>
    
   </div>
 
