@@ -1,8 +1,7 @@
 const CACHE_NAME = 'version-1.0.2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/images/Logo.png'
+  '/LolPick/index.html',
+  '/LolPick/icons/Logo.png'
 ];
 
 // Instalar el Service Worker y cachear los archivos principales
