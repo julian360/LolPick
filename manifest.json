@@ -1,6 +1,7 @@
 {
   "name": "LolPick",
   "short_name": "LolPick",
+  "scope": "/LolPick/",
   "start_url": "/LolPick/",
   "display": "fullscreen",
   "background_color": "#000000",
