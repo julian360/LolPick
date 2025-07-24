@@ -1,0 +1,29 @@
+{
+  "name": "LolPick",
+  "short_name": "LolPick",
+  "start_url": "/lolpick/",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#1c1c1c",
+  "description": "Arma equipos y analiza cual es tu mejor opción para pickear",
+  "icons": [
+    {
+      "src": "icons/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
