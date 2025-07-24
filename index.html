@@ -17,7 +17,7 @@ body {
 
 /* Estilos para la barra de navegación (Ahora con flex-wrap) */
 nav {
-  background-color: #325d89; /* Un color oscuro para la barra de navegación */
+  background: linear-gradient(180deg, #0099ff, #9234db);
   overflow: hidden; /* Para contener los elementos flotados */
   border-radius: 8px; /* Bordes redondeados para la barra de navegación */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
@@ -59,7 +59,7 @@ nav a:hover {
 /* Estilos para el contenedor de contenido */
 #content {
   
-  padding: 5px;
+  padding: 7px;
 background: linear-gradient(to bottom, rgb(128 167 206), rgb(30 73 100));
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -248,6 +248,7 @@ background-color: #151515;
   font-size: 16px; /* Hacer la fuente un poco más pequeña */
   padding: 8px 12px; /* Reducir el padding */
   background: #f3f3f3;
+  margin-bottom: 10px;
 }
 
 .team-builder-inputs-row .suggestions-list {
@@ -263,6 +264,7 @@ background-color: #151515;
 .team-builder-inputs-row .selected-champions-display {
     margin-top: 5px;
     justify-content: flex-start; /* Alinear tags a la izquierda */
+    text-align: center;
 }
 
 .team-builder-inputs-row .champion-tag {
@@ -692,7 +694,7 @@ document.head.appendChild(style);
 
 
         title.style.marginBottom = '10px';
-         title.style.marginLeft = '10px';
+         title.style.marginLeft = '0px';
         sectionDiv.appendChild(title);
 
         const selectedDisplay = document.createElement('div');
