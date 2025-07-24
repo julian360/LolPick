@@ -54,7 +54,40 @@ nav a:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el ratón */
 }
 
-/* Estilos para el contenedor de contenido */
+/* --- ESTILOS PARA EL BOTÓN DE INSTALACIÓN --- */
+.install-container {
+    display: none; /* Oculto por defecto, se mostrará con JS */
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(180deg, #16a085, #27ae60);
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.install-button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.install-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+/* --- FIN DE ESTILOS PARA EL BOTÓN DE INSTALACIÓN --- */
+
 
 /* Estilos para el contenedor de contenido */
 #content {
@@ -286,6 +319,8 @@ background-color: #151515;
     height: 80%;
   }
 }
+
+
   </style>
   <link rel="manifest" href="manifest.json">
  <link rel="icon" type="image/png" href="icons/Icon.png">
@@ -299,6 +334,12 @@ background-color: #151515;
     <a href="#tierlist" id="tierlist-tab">Tierlist</a>
     <a href="#teambuilder" id="teambuilder-tab">Team Builder</a>
   </nav>
+
+  <!-- Contenedor del Botón de Instalación -->
+  <div id="install-container" class="install-container">
+    <button id="install-button" class="install-button">Instalar App 📱</button>
+  </div>
+
 
   <div id="content">
     <img src="icons/Logo_XL.png" id="logo" style="display: block; /* Make the image a block-level element */
@@ -526,6 +567,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const countersTab = document.getElementById('counters-tab');
   const sinergysTab = document.getElementById('sinergys-tab');
   const teambuilderTab = document.getElementById('teambuilder-tab');
+
+  // --- LÓGICA DE INSTALACIÓN DE PWA ---
+  let deferredPrompt;
+  const installContainer = document.getElementById('install-container');
+  const installButton = document.getElementById('install-button');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Evita que Chrome 67 y anteriores muestren automáticamente el aviso
+    e.preventDefault();
+    // Guarda el evento para que pueda ser activado más tarde.
+    deferredPrompt = e;
+    // Muestra el botón de instalación
+    if (installContainer) {
+        installContainer.style.display = 'block';
+    }
+  });
+
+  if (installButton) {
+      installButton.addEventListener('click', async () => {
+        // Oculta el botón de instalación
+        if (installContainer) {
+            installContainer.style.display = 'none';
+        }
+        // Muestra el aviso de instalación
+        deferredPrompt.prompt();
+        // Espera a que el usuario responda al aviso
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Respuesta del usuario al aviso de instalación: ${outcome}`);
+        // Ya hemos usado el aviso, no podemos usarlo de nuevo.
+        deferredPrompt = null;
+      });
+  }
+  
+  window.addEventListener('appinstalled', (evt) => {
+      console.log('La aplicación ha sido instalada.');
+      // Oculta el banner de instalación si todavía está visible
+      if (installContainer) {
+        installContainer.style.display = 'none';
+      }
+  });
+  // --- FIN DE LÓGICA DE INSTALACIÓN DE PWA ---
+
 
   // Función para limpiar el contenido
   function clearContent() {
@@ -1028,5 +1111,9 @@ document.head.appendChild(style);
   });
 });
 </script>
+
+
+
+
 </body>
 </html>
