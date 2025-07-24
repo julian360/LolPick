@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>LOL STATIK</title>
+  <title>LOL Pick & Team Builder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 /* Estilos para el cuerpo de la página */
@@ -57,13 +57,14 @@ nav a:hover {
 
 /* Estilos para el contenedor de contenido */
 #content {
-  margin: 20px;
-  padding: 20px;
+  
+  padding: 5px;
 background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  min-height: 200px; /* Altura mínima para el contenido */
+  min-height: 600px; /* Altura mínima para el contenido */
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 
@@ -100,7 +101,9 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 20px;
+  padding: 1px;
+  position: relative;
+
 }
 
 .search-input {
@@ -121,6 +124,9 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 }
 
 .suggestions-list {
+  position: absolute;
+  top: 100%;
+  width: 50%;
   list-style: none;
   padding: 0;
   margin: 5px 0 0 0;
@@ -134,7 +140,6 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   overflow-y: auto;
   z-index: 10; /* Asegura que esté por encima de otros elementos */
 }
-
 .suggestions-list li {
   padding: 10px 15px;
   cursor: pointer;
@@ -225,6 +230,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   width: 100%;
   max-width: 800px; /* Ancho máximo para la fila de inputs */
   margin-bottom: 0px; /* Margen inferior para separarlo de la tierlist */
+  position: relative;
 
 }
 
@@ -243,7 +249,7 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 
 .team-builder-inputs-row .suggestions-list {
   width: 90%;
-  max-width: none;
+  max-width: 90%;
 }
 
 .team-builder-inputs-row .team-builder-section h3 {
@@ -271,6 +277,9 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
 
 
   </style>
+  <link rel="manifest" href="manifest.json">
+ <link rel="icon" type="image/png" href="icons/Icon.png">
+
 </head>
 
 <body>
@@ -282,7 +291,9 @@ background: linear-gradient(to bottom, rgb(222 233 244), rgb(61 142 194));
   </nav>
 
   <div id="content">
-    <p>Haz click en una solapa para ver el contenido.</p>
+
+    <span style="text-align: center;"><p><h1>Arma equipos y analiza cual es tu mejor opción para pickear</h1></p><span>
+   
   </div>
 
 <script>
@@ -312,7 +323,7 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "heimerdinger": { "value": 51.53, "counter": "yasuo,quinn,kayle,sion,ornn", "synergy": "zilean,belveth,yasuo,tryndamere,swain", "imagen": url_img + "Heimerdinger.png" },
   "illaoi": { "value": 52.245, "counter": "ryze,singed,mordekaiser,kayle,maokai", "synergy": "tryndamere,elise,gwen,talon,xinzhao", "imagen": url_img + "Illaoi.png" },
   "irelia": { "value": 49.485, "counter": "warwick,zac,riven,jax,malphite", "synergy": "yone,aurora,yorick,ryze,darius", "imagen": url_img + "Irelia.png" },
-  "janna": { "value": 52.49, "counter": "sona,nami,soraka,leona,zyra", "synergy": "mel,swain,sylas,renataglasc,soraka", "imagen": url_img + "Janna.png" },
+  "janna": { "value": 52.49, "counter": "nidalee,karthus,yunara,nami,milio", "synergy": "kogmaw,vayne,sivir,nilah,missfortune", "imagen": url_img + "Janna.png" },
   "jarvaniv": { "value": 56.56, "counter": "ivern,gwen,masteryi,briar,trundle", "synergy": "vayne,fiddlesticks,zyra,shen,zilean", "imagen": url_img + "JarvanIV.png" },
   "jax": { "value": 52.675, "counter": "poppy,heimerdinger,quinn,urgot,irelia", "synergy": "yone,wukong,yasuo,irelia,garen", "imagen": url_img + "Jax.png" },
   "jayce": { "value": 47.695, "counter": "malphite,irelia,tryndamere,drmundo,quinn", "synergy": "illaoi,singed,ryze,rumble,irelia", "imagen": url_img + "Jayce.png" },
@@ -354,7 +365,7 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "poppy": { "value": 51.99, "counter": "sona,fiddlesticks,janna,tahmkench,taric", "synergy": "kaisa,draven,jhin,caitlyn,tristana", "imagen": url_img + "Poppy.png" },
   "pyke": { "value": 53.135, "counter": "shaco,maokai,elise,janna,sona", "synergy": "brand,mel,tahmkench,senna,pantheon", "imagen": url_img + "Pyke.png" },
   "qiyana": { "value": 42.255, "counter": "pantheon,malphite,vex,swain,zoe", "synergy": "smolder,mel,yone,zed,khazix", "imagen": url_img + "Qiyana.png" },
-  "quinn": { "value": 51.635, "counter": "irelia,malphite,wukong,ornn,olaf", "synergy": "singed,trundle,volibear,vayne,olaf", "imagen": url_img + "Quinn.png" },
+  "quinn": { "value": 51.635, "counter": "sivir,sona,samira,brand,braum", "synergy": "morgana,pyke,seraphine,lux,nami", "imagen": url_img + "Quinn.png" },
   "rakan": { "value": 51.595, "counter": "taric,janna,bard,milio,morgana", "synergy": "xayah,tristana,yasuo,samira,kaisa", "imagen": url_img + "Rakan.png" },
   "rammus": { "value": 53.985, "counter": "lillia,karthus,gwen,vi,jarvaniv", "synergy": "zilean,yasuo,belveth,tryndamere,swain", "imagen": url_img + "Rammus.png" },
   "reksai": { "value": 50.46, "counter": "ivern,jax,nunu,graves,poppy", "synergy": "sejuani,taliyah,vi,amumu,aatrox", "imagen": url_img + "RekSai.png" },
@@ -367,7 +378,7 @@ const url_img = "https://ddragon.leagueoflegends.com/cdn/15.14.1/img/champion/";
   "samira": { "value": 52.355, "counter": "nilah,jinx,kogmaw,corki,xayah", "synergy": "nautilus,rell,alistar,thresh,leona", "imagen": url_img + "Samira.png" },
   "sejuani": { "value": 50.66, "counter": "lillia,reksai,wukong,elise,fiddlesticks", "synergy": "rumble,corki,kayle,quinn,heimerdinger", "imagen": url_img + "Sejuani.png" },
   "senna": { "value": 51.35, "counter": "zyra,maokai,fiddlesticks,taric,milio", "synergy": "ezreal,jinx,ashe,caitlyn,jhin", "imagen": url_img + "Senna.png" },
-  "seraphine": { "value": 55.175, "counter": "fiddlesticks,milio,yuumi,zilean,pyke", "synergy": "sylas,pantheon,senna,maokai,fiddlesticks", "imagen": url_img + "Seraphine.png" },
+  "seraphine": { "value": 55.175, "counter": "elise,jinx,nami,milio,kaisa", "synergy": "xayah,missfortune,vayne,nilah,twitch", "imagen": url_img + "Seraphine.png" },
   "sett": { "value": 70.195, "counter": "aurora,akali,kayle,vayne,quinn", "synergy": "yasuo,rumble,yone,gwen,zilean", "imagen": url_img + "Sett.png" },
   "shaco": { "value": 61.21, "counter": "briar,gragas,nocturne,reksai,rengar", "synergy": "missfortune,caitlyn,jhin,draven,samira", "imagen": url_img + "Shaco.png" },
   "shen": { "value": 54.48, "counter": "vayne,singed,quinn,riven,zac", "synergy": "vayne,nilah,yasuo,xayah,jinx", "imagen": url_img + "Shen.png" },
